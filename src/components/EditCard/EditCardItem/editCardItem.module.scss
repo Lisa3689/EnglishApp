@@ -1,0 +1,36 @@
+.tableItem {
+    display: flex;
+}
+
+.numberItem {
+    width: 8%;
+}
+
+.mainItem {
+    width: 23%;
+}
+
+.headerItem {
+    border: 1px solid black;
+    padding: 15px 10px;
+}
+
+.icon {
+    width: 30px;
+    cursor: pointer;
+}
+
+.settingsItem {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.input {
+    border-color: black;
+
+    &:focus {
+        outline: none;
+    }
+}

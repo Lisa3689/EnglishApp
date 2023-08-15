@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color:#87DBDD;
+    color: aliceblue;
+    padding: 20px 0;
+    font-size: 20px;
+    align-items: center;
+}
+
+.part1 {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+}
+
+.easy {
+    color: #000000;
+}
+
+
+.part2{
+    display: flex;
+}
+
+.themes {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.repeat {
+    margin-right: 20px;
+    color: #FEDA49;
+}
+
+.know {
+    margin-right: 20px;
+    color: #FEDA49;
+}
+
+.aboutus {
+    color: #000000;
+}

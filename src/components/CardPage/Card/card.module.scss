@@ -1,0 +1,35 @@
+.card {
+    width: 400px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FEDA49;
+    border-radius: 20px;
+    border: solid;
+}
+
+.button {
+    color: #121212;
+    background-color:#FEDA49;
+    padding: 8px;
+    border:white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: small;
+}
+
+.button:hover {
+    outline: dotted rgb(13, 13, 13);
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.transcription {
+    font-size: 25px;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,29 @@
+.cardPage {
+    margin-top: 50px;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+}
+
+.btnsBlock {
+    display: flex;
+    justify-content: space-around;
+}
+
+button{
+    padding: 10px 70px;
+    margin: 20px;
+    border-radius: 50px;
+    font-size: large;
+    cursor: pointer;
+}
+
+
+.countBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+
