@@ -6,11 +6,14 @@ import Loader from "../Loader/Loader";
 import axios from "axios";
 import { showError, showSuccess } from "../../utils/notifications";
 import { API_URL } from "../../http";
+import PaginationButton from "../sharedComponents/PaginationButton/PaginationButton";
 
 
 const EditCard = () => {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [pageAmount, setPageAmount] = useState([]);
+
 
   const onDelete = async (id) => {
     try{
@@ -31,7 +34,7 @@ const EditCard = () => {
 
   };
 
-  const changeItem= async (id, name, transcription, translation)=>{
+  const changeItem = async (id, name, transcription, translation)=>{
     try{
       setIsLoading(true)
       const putData = {
@@ -75,6 +78,9 @@ const EditCard = () => {
   const getWords = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/words`);
+      const pageCount = data.meta.pagination.pageCount;
+      const arr = new Array(pageCount).fill().map((_, index) => index + 1);
+      setPageAmount(arr)
       setCards(data.data);
     } catch (err) {
       showError(err.message);
@@ -82,6 +88,15 @@ const EditCard = () => {
       setIsLoading(false);
     }
   };
+
+  const getMorePage = async (page)=>{
+      try{ 
+        const {data} = await axios.get(`${API_URL}/words?pagination[page]=${page}`)
+        setCards(data.data)
+      }
+      catch(err){}
+      finally{}
+  }
 
   useEffect(() => {
     getWords();
@@ -117,6 +132,12 @@ const EditCard = () => {
           />
         );
       })}
+
+      <div className={styles.pagination}>
+        {pageAmount.map(item => {
+          return <PaginationButton getMorePage={getMorePage} key={item} pageCount={item}/>
+        })}
+      </div>
     </div>
   );
 };
@@ -137,21 +158,3 @@ export default EditCard;
 
 //[{id: 1, name: 'Hey'}, {id: 3, name: 'err'}]
 
-const item = {
-  "id": 9,
-  "attributes": {
-      "name": "yellow",
-      "transcription": "[ˈjeləʊ]",
-      "translation": "желтый",
-      "createdAt": "2023-07-13T16:09:36.668Z",
-      "updatedAt": "2023-07-13T16:09:36.668Z"
-  }
-}
-
-
-const human = {
-  family:{
-    mother:'7',
-    fater:'7'
-  }
-}
