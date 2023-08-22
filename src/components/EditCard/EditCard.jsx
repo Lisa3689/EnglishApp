@@ -13,6 +13,7 @@ const EditCard = () => {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pageAmount, setPageAmount] = useState([]);
+  const [activePage, setActivePage] = useState(1);
 
 
   const onDelete = async (id) => {
@@ -90,12 +91,15 @@ const EditCard = () => {
   };
 
   const getMorePage = async (page)=>{
-      try{ 
+      try{
+        setIsLoading(true)
         const {data} = await axios.get(`${API_URL}/words?pagination[page]=${page}`)
         setCards(data.data)
+        setActivePage(page)
+        
       }
-      catch(err){}
-      finally{}
+      catch(err){showError(err.message)}
+      finally{setIsLoading(false)}
   }
 
   useEffect(() => {
@@ -135,7 +139,7 @@ const EditCard = () => {
 
       <div className={styles.pagination}>
         {pageAmount.map(item => {
-          return <PaginationButton getMorePage={getMorePage} key={item} pageCount={item}/>
+          return <PaginationButton activePage={activePage} getMorePage={getMorePage} key={item} pageCount={item}/>
         })}
       </div>
     </div>
