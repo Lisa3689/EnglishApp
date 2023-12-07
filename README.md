@@ -11,7 +11,6 @@
 
 
 <h3>Result:<h2/>
-https://english-app-zeta.vercel.app/
 
 
 
